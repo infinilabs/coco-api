@@ -4,7 +4,8 @@
   "description": "Build powerful Coco extensions with the Coco Extension APIs.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write \"src/**/*.ts\""
   },
   "keywords": [],
   "author": "",
@@ -12,6 +13,7 @@
   "type": "commonjs",
   "devDependencies": {
     "@types/node": "^24.3.1",
+    "prettier": "^3.6.2",
     "typescript": "^5.9.2"
   }
 }
