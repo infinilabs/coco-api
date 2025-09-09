@@ -2,11 +2,16 @@
   "name": "coco-api",
   "version": "1.0.0",
   "description": "Build powerful Coco extensions with the Coco Extension APIs.",
-  "main": "index.js",
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write \"src/**/*.ts\""
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "./fs": "./dist/fs.js"
   },
   "keywords": [],
   "author": "",
