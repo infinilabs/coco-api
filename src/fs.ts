@@ -1,5 +1,5 @@
 import type * as nodejs_fs from 'fs';
-import { requestFromHost } from './util';
+import { requestFromIFrame } from './utils';
 
 /**
  * Asynchronously reads the contents of a directory.
@@ -29,7 +29,7 @@ export function readdir(
         recursive: boolean;
     },
 ): Promise<string[] | nodejs_fs.Dirent[]> {
-    return requestFromHost({
+    return requestFromIFrame({
         command: 'readdir',
         path: path.toString(),
         options,

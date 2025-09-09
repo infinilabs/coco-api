@@ -6,14 +6,15 @@ const EVENT_TYPE_MESSAGE = 'message';
  *
  * @returns {Promise<any>}
  */
-function requestFromIFrame(
-    messagePayload: NonNullable<object & { command: string }>,
-) {
+export function requestFromIFrame<T = any>(messagePayload: {
+    command: string;
+    [key: string]: any;
+}): Promise<T> {
     return new Promise((resolve, reject) => {
         const requestId = `${messagePayload.command}-${Date.now()}-${Math.random()}`;
         const messageToSend = { ...messagePayload, id: requestId };
 
-        const messageHandler = (event) => {
+        const messageHandler = (event: MessageEvent) => {
             const { id, error, payload } = event.data;
             if (id === requestId) {
                 window.removeEventListener(EVENT_TYPE_MESSAGE, messageHandler);
