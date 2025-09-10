@@ -6,10 +6,12 @@ const EVENT_TYPE_MESSAGE = 'message';
  *
  * @returns {Promise<any>}
  */
-export function requestFromIFrame<T = any>(messagePayload: {
+export function oneshotRequest<T = any>(messagePayload: {
     command: string;
     [key: string]: any;
 }): Promise<T> {
+    // TODO: add a timeout, we cannot wait for the response forever
+
     return new Promise((resolve, reject) => {
         const requestId = `${messagePayload.command}-${Date.now()}-${Math.random()}`;
         const messageToSend = { ...messagePayload, id: requestId };
@@ -27,7 +29,10 @@ export function requestFromIFrame<T = any>(messagePayload: {
         };
 
         window.addEventListener(EVENT_TYPE_MESSAGE, messageHandler);
-        // TODO: do not use '*' as the origin, it is dangerous
-        window.postMessage(messageToSend, '*');
+        // TODO: Use tauri's real origin?
+        //
+        // dev: http://localhost:1420 
+        // build: ???
+        window.parent.postMessage(messageToSend, '*');
     });
 }
