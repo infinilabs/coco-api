@@ -1,6 +1,6 @@
 {
   "name": "coco-api",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Build powerful Coco extensions with the Coco Extension APIs.",
   "scripts": {
     "build": "tsc",
@@ -11,7 +11,7 @@
     "dist"
   ],
   "exports": {
-    "./fs": "./dist/fs.js"
+    ".": "./dist/lib.js"
   },
   "keywords": [],
   "author": "",

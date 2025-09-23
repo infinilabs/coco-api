@@ -1,12 +1,6 @@
 const EVENT_TYPE_MESSAGE = 'message';
 
-/**
- * Helper function to send function call message to the parent window and wait
- * for the return value.
- *
- * @returns {Promise<any>}
- */
-export function oneshotRequest<T = any>(messagePayload: {
+export function invoke<T = any>(messagePayload: {
     command: string;
     [key: string]: any;
 }): Promise<T> {
